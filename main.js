@@ -4,29 +4,59 @@ const agregarJugada=(valor,jugador)=>{
 
     if (jugador === "jugador_1") {
         jugada_n_1 = valor
-       
-        
-
     } else if (jugador === "jugador_2") {
         jugador_n_2 = valor
-        
-        
-    }
-    
 
+    }
+    remarcar(valor,jugador)
     ganar()
+}
+const remarcar=(valor,jugador)=>{
+    if (valor ==="tijera" && jugador === "jugador_1") {
+        document.getElementById('id-tijera').classList.toggle('selecionada');
+        document.getElementById('id-paper').classList.remove('selecionada');
+        document.getElementById('id-rock').classList.remove('selecionada');
+    }
+    if (valor ==="rock" && jugador === "jugador_1") {
+        document.getElementById('id-rock').classList.toggle('selecionada');
+        document.getElementById('id-paper').classList.remove('selecionada');
+        document.getElementById('id-tijera').classList.remove('selecionada');
+    }
+    if (valor ==="paper" && jugador === "jugador_1") {
+        document.getElementById('id-paper').classList.toggle('selecionada');
+        document.getElementById('id-rock').classList.remove('selecionada');
+        document.getElementById('id-tijera').classList.remove('selecionada');
+    }
+    if (valor ==="tijera" && jugador === "jugador_2") {
+        document.getElementById('id-n2-tijera').classList.toggle('selecionada-n-2');
+        document.getElementById('id-n2-paper').classList.remove('selecionada-n-2');
+        document.getElementById('id-n2-rock').classList.remove('selecionada-n-2');
+    }
+    if (valor ==="rock" && jugador === "jugador_2") {
+        document.getElementById('id-n2-rock').classList.toggle('selecionada-n-2');
+        document.getElementById('id-n2-paper').classList.remove('selecionada-n-2');
+        document.getElementById('id-n2-tijera').classList.remove('selecionada-n-2');
+    }
+    if (valor ==="paper" && jugador === "jugador_2") {
+        document.getElementById('id-n2-paper').classList.toggle('selecionada-n-2');
+        document.getElementById('id-n2-rock').classList.remove('selecionada-n-2');
+        document.getElementById('id-n2-tijera').classList.remove('selecionada-n-2');
+    }
+
+
 }
 const borrar=()=>{
 
-    if (jugada_n_1 !="") {
-        
-        jugada_n_1 = ""
-        
-    }
-    if (jugador_n_2 !="") {
-        jugador_n_2 = ""
-    }
-
+ 
+    jugada_n_1 = ""
+  
+    jugador_n_2 = ""
+    document.getElementById(`id-n2-tijera`).classList.remove('selecionada-n-2');
+    document.getElementById(`id-n2-paper`).classList.remove('selecionada-n-2');
+    document.getElementById(`id-n2-rock`).classList.remove('selecionada-n-2');
+    document.getElementById(`id-tijera`).classList.remove('selecionada');
+    document.getElementById(`id-paper`).classList.remove('selecionada');
+    document.getElementById(`id-rock`).classList.remove('selecionada');
 }
 const ganar =()=>{
 
@@ -49,7 +79,7 @@ const ganar =()=>{
 
     }
 const mostrarResultado =(resultado)=>{
-    
+    mostrarResultadodiv = document.getElementById("mostrarResultado")
     // document.getElementById(`id-n2-${jugador_n_2}`).classList.add('selecionada-n-2');
     mostrarResultadodiv.innerHTML = ` <h2 class="resultado">${resultado}</h2>`
     borrar()
