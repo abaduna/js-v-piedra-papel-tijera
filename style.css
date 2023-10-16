@@ -20,3 +20,9 @@ i:hover{
 .jugador2:hover{
     background-color: rgba(0, 0, 255, 0.497);
 }
+.resultado{
+    margin: 30px;
+    font-size: 70px;
+    text-align: center;
+    border: 1px solid black;
+}
